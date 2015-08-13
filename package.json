@@ -1,0 +1,18 @@
+{
+  "name": "3d",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "google-url": "0.0.4",
+    "lodash.defaults": "^3.1.2",
+    "open": "0.0.5",
+    "prompt": "^0.2.14",
+    "request": "^2.60.0"
+  }
+}
