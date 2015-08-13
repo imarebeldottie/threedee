@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var
+	path = require('path'),
+	fs   = require('fs'),
+	src  = path.join(path.dirname(fs.realpathSync(__filename)), '..')
+;
+
+require(src + '/index.js');

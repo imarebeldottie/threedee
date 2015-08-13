@@ -1,7 +1,7 @@
 {
-  "name": "3d",
+  "name": "threedee",
   "version": "1.0.0",
-  "description": "",
+  "description": "Make sweet fucking 3d text",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

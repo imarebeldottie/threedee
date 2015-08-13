@@ -1,6 +1,6 @@
 var
 	prompt   = require('prompt'),
-	threedee = require('./3d')
+	threedee = require('./lib/3d')
 ;
 
 prompt.start();
