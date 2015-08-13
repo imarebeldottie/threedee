@@ -1,15 +1,11 @@
 var
 	fonts      = require('./fonts'),
 	animations = require('./animations'),
+	shorten    = require('./shorten'),
 	open       = require('open'),
 	request    = require('request'),
-	defaults   = require('lodash.defaults'),
-	GoogleURL  = require('google-url')
+	defaults   = require('lodash.defaults')
 ;
-
-var googleUrl = new GoogleURL({
-	key: 'AIzaSyCMRAGMNuQzleNLwh8Pn9fecMEhKJ4STEw'
-});
 
 module.exports = {
 	magic: function(options, callback) {
@@ -29,18 +25,17 @@ module.exports = {
 				return callback('Unable to extract the 3d awesomeness.');
 			}
 
-			googleUrl.shorten(src, function( err, shortUrl ) {
+			shorten(src, function(err, shortUrl) {
 				if (err) {
 					return callback(err);
 				}
-				
+
 				callback(null, {
 					source: shortUrl,
 					launch: function() {
 						open(shortUrl);
 					}
 				});
-
 			});
 		});
 	},
@@ -119,8 +114,6 @@ module.exports = {
 			;
 
 			attr['font' + index] = fonts[index][Math.floor(Math.random() * fonts[index].length)];
-
-			console.log(attr);
 
 			return attr;
 		},
