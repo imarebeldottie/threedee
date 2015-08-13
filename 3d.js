@@ -1,15 +1,15 @@
 var
-	fonts     = require('./fonts'),
-	open      = require('open'),
-	request   = require('request'),
-	defaults  = require('lodash.defaults'),
-	GoogleURL = require('google-url')
+	fonts      = require('./fonts'),
+	animations = require('./animations'),
+	open       = require('open'),
+	request    = require('request'),
+	defaults   = require('lodash.defaults'),
+	GoogleURL  = require('google-url')
 ;
 
-var 
-	styleValues = ['Stationary', 'RotateRight', 'RotateRightSingle', 'RotateLeftSingle', 'SlideRight', 'SlideLeft', 'Swing', 'SwingSingle', 'FlipBackward', 'FlipForward', 'Zoom'],
-	googleUrl 	= new GoogleURL({key: 'AIzaSyCMRAGMNuQzleNLwh8Pn9fecMEhKJ4STEw'});
-;
+var googleUrl = new GoogleURL({
+	key: 'AIzaSyCMRAGMNuQzleNLwh8Pn9fecMEhKJ4STEw'
+});
 
 module.exports = {
 	magic: function(options, callback) {
@@ -30,9 +30,10 @@ module.exports = {
 			}
 
 			googleUrl.shorten(src, function( err, shortUrl ) {
-
-				console.log(shortUrl);
-
+				if (err) {
+					return callback(err);
+				}
+				
 				callback(null, {
 					source: shortUrl,
 					launch: function() {
@@ -64,7 +65,7 @@ module.exports = {
 				dimensions   : 'default',
 				customwidth  : '',
 				customheight : '',
-				style        : this.randomStyle(),
+				style        : this.randomAnimation(),
 				speed        : 'Slow',
 				height       : 30,
 				depth        : 5,
@@ -133,10 +134,8 @@ module.exports = {
 				this.random(0, 255).toString(16).toUpperCase()
 			];
 		},
-		randomStyle: function() {
-			var style =  styleValues[Math.floor(Math.random() * styleValues.length)];
-			console.log(style);
-			return style;
+		randomAnimation: function() {
+			return animations[this.random(0, animations.length - 1)];
 		}
 	}
 };

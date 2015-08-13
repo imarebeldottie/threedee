@@ -1,0 +1,1 @@
+module.exports = ['Stationary', 'RotateRight', 'RotateRightSingle', 'RotateLeftSingle', 'SlideRight', 'SlideLeft', 'Swing', 'SwingSingle', 'FlipBackward', 'FlipForward', 'Zoom'];
