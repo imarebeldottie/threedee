@@ -1,20 +1,12 @@
 var
-	prompt   = require('prompt'),
+	util     = require('./lib/util'),
 	threedee = require('./lib/3d')
 ;
 
-prompt.start();
-
-prompt.get(['text'], function(err, result) {
-	if (err) {
-		return console.error(err);
+threedee.magic(util.arguments, function(err, image) {
+	if (!err) {
+		return image.launch();
 	}
 
-	threedee.magic(result, function(err, image) {
-		if (!err) {
-			return image.launch();
-		}
-
-		console.error(err);
-	});
+	console.error(err);
 });
